@@ -1,4 +1,4 @@
-Plugins for the python3 version of cloudbot (insert link)
+Plugins for the python3 version of cloudbot https://github.com/CloudBotIRC/CloudBot
 
 title.py: scrapes webpage titles and relays to channel (has basic carriage return/linefeed removal for titles as well, can be expanded)
 
