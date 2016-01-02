@@ -15,6 +15,9 @@ def titlep(url):
 		tree = etree.parse(f, parser)
 
 	title = tree.find("head/title")
+	#test for NoneType and discard if so
+	if title is None:
+		return
 	temp = title.text.replace('\n', ' ').replace('\r', ' ')
 	return temp
 
