@@ -13,7 +13,7 @@ def titlep(url):
 	parser = etree.HTMLParser(remove_blank_text=True)
 	with urlopen(url) as f:
 		tree = etree.parse(f, parser)
-
+	tree = tree.getroot()
 	title = tree.find("head/title")
 	#test for NoneType and discard if so
 	if title is None:
