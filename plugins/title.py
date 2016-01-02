@@ -5,6 +5,7 @@ from cloudbot import hook
 from lxml import etree
 from urllib.request import urlopen
 from urllib.error import HTTPError
+import time
 
 def titlep(url):
 	parser = etree.HTMLParser(remove_blank_text=True)
@@ -21,7 +22,7 @@ def resolve_redir(url):
 		return urlopen(url).geturl()
 	except HTTPError as e:
 		if e.code == 429:
-			time.sleep(50);
+			time.sleep(4);
 			return resolve_redir(url)
 		raise
 
