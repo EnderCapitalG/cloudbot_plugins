@@ -8,6 +8,8 @@ from urllib.error import HTTPError
 import time
 
 def titlep(url):
+	if url is "404" or url is "403":
+		return
 	parser = etree.HTMLParser(remove_blank_text=True)
 	with urlopen(url) as f:
 		tree = etree.parse(f, parser)
@@ -24,6 +26,10 @@ def resolve_redir(url):
 		if e.code == 429:
 			time.sleep(4);
 			return resolve_redir(url)
+		if e.code == 403:
+			return "403"
+		if e.code == 404:
+			return "404"
 		raise
 
 @hook.regex(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
