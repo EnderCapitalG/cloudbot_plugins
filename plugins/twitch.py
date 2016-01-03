@@ -14,9 +14,8 @@ def twitchp(url):
 
 	return stream
 
-@hook.regex(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
+@hook.regex(r'(.*:)//(twitch.tv|www.twitch.tv)(:[0-9]+)?(.*)')
 def twitch_regex(match, nick):
 	matchtext = match.group(0).lower()
-	if 'twitch.tv' in matchtext:
-		url = matchtext.rsplit('/', 1)[-1]
-		return twitchp(url)
+	url = matchtext.rsplit('/', 1)[-1]
+	return twitchp(url)
