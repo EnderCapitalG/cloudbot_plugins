@@ -44,7 +44,6 @@ def parse_agdq_schedule():
 		gs.append([gtime, game])
 
 	schedule = gs
-	global epoch
 	print("Updating AGDQ schedule.")
 
 @hook.command('schedule')
