@@ -26,7 +26,7 @@ def fml_parse():
 @hook.command('fml')
 def fml():
 	global fml_array, array_count, array_total
-	if not fml_array or array_count is array_total:
+	if not fml_array or array_count >= array_total:
 		fml_parse()
 
 	return ret_fml()
