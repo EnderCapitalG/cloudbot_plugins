@@ -1,3 +1,6 @@
+#Made for cloudbot
+#Created by ender.capitalg@gmail.com
+
 from cloudbot import hook
 import requests
 import lxml.html
@@ -36,7 +39,7 @@ def ret_fml():
 	global array_count, array_total, fml_array
 	retval = ''
 	while "FML" not in fml_array[array_count]:
-		retval = retval + " " + fml_array[array_count]
+		retval = retval + fml_array[array_count]
 		array_count += 1
 
 	array_count += 1
