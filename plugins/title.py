@@ -8,12 +8,15 @@ from urllib.error import HTTPError
 import time
 
 def titlep(url):
-	if url is "404" or url is "403":
+	if url is "404" or url is "403" or url is "303":
 		return
 	parser = etree.HTMLParser(remove_blank_text=True)
 	with urlopen(url) as f:
 		tree = etree.parse(f, parser)
+	#TIL tree can return NoneType
 	tree = tree.getroot()
+	if tree is None:
+		return
 	title = tree.find("head/title")
 	#test for NoneType and discard if so
 	if title is None:
@@ -33,6 +36,8 @@ def resolve_redir(url):
 			return "403"
 		if e.code == 404:
 			return "404"
+		if e.code == 303:
+			return "303"
 		raise
 
 @hook.regex(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
