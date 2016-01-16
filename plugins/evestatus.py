@@ -8,8 +8,8 @@ import requests
 
 tqcache = 0
 sisicache = 0
-tqtree = etree.parse("data/tmp.xml")
-sisitree = etree.parse("data/tmp.xml")
+tqtree = ''
+sisitree = ''
 
 @hook.command('tq')
 @hook.command('eve')
