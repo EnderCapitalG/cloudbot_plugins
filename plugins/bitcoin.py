@@ -1,7 +1,6 @@
 #Made for cloudbot
 #Created by ender.capitalg@gmail.com
 from cloudbot import hook
-import json
 import requests
 
 def get_bitcoin():
