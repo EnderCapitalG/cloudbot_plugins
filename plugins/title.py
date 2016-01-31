@@ -3,22 +3,25 @@
 
 from cloudbot import hook
 from lxml import etree
-from urllib.request import urlopen
+from urllib.request import urlopen, Request
 from urllib.error import HTTPError
 import time
 
 #basic spam protection
 lastURL = ''
 
+header = { 'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.97 Safari/537.36' }
+
 def titlep(url):
 	global lastURL
+	global header
 	if url is "failed":
 		return
 	if url in lastURL:
 		return
 	lastURL = url
 	parser = etree.HTMLParser(remove_blank_text=True)
-	with urlopen(url) as f:
+	with urlopen(Request(url, headers = header)) as f:
 		tree = etree.parse(f, parser)
 	tree = tree.getroot()
 	#apparently the tree can return nonetype as well?
@@ -33,8 +36,9 @@ def titlep(url):
 
 #basically to stop reddit from kicking an error back
 def resolve_redir(url):
+	global header
 	try:
-		return urlopen(url).geturl()
+		return urlopen(Request(url, headers = header)).geturl()
 	except HTTPError as e:
 		if e.code == 429:
 			time.sleep(3);
