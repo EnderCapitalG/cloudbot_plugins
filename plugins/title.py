@@ -51,12 +51,7 @@ def resolve_redir(url):
 @hook.regex(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+')
 def titlec(match, nick):
 	matchtext = match.group(0).lower()
-	if 'SHODAN' in nick or 'Steve' in nick or 'TBot' in nick or 'ZyklonB' in nick:
-		return
+	#example filter, since twitch is handled by twitch.py
 	if 'twitch.tv' in matchtext:
-		return
-	elif 'youtube.com' in matchtext or 'youtu.be' in matchtext:
-		return
-	elif 'twitter.com' in matchtext or 'https://t.co' in matchtext:
 		return
 	return titlep(resolve_redir(matchtext))
