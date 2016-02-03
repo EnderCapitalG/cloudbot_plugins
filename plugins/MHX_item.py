@@ -30,3 +30,6 @@ def MHX_Item(text):
 		if text.lower() in elem:
 			return htmlTable[i]
 		i += 1
+
+	#if we got here, no match
+	return "No item found."
