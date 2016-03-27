@@ -2,7 +2,6 @@
 #Created by ender.capitalg@gmail.com
 
 from cloudbot import hook
-import json
 import requests
 
 def twitchp(url):
