@@ -1,0 +1,100 @@
+{
+  "resources": {
+    "background": "backgrounds/beach-paradise-beach-desktop.jpg",
+    "font": "fonts/ComicBD.ttf",
+    "font_size": 14,
+    "buffer_size": 30,
+    "private_save_path": "/path/to/save",
+    "private_url_prefix": "http://fake.url/"
+  },
+  "connections": [
+    {
+      "name": "local",
+      "connection": {
+        "server": "example.com",
+        "port": 6697,
+        "ssl": true,
+        "ignore_cert": true
+      },
+      "nick": "botname",
+      "user": "botuser",
+      "realname": "botrealname",
+      "avoid_notices": false,
+      "channels": [
+        "#example1",
+        "#example2"
+      ],
+      "disabled_commands": [],
+      "acls": {},
+      "nickserv": {
+        "enabled": true,
+        "nickserv_password": "password",
+        "nickserv_user": "nickservname",
+        "nickserv_name": "nickserv",
+        "nickserv_command": "IDENTIFY"
+      },
+      "ratelimit": {
+        "max_tokens": 17.5,
+        "restore_rate": 2,
+        "message_cost": 10,
+        "strict": true
+      },
+      "permissions": {
+        "admins": {
+          "perms": [
+            "addfactoid",
+            "delfactoid",
+            "ignore",
+            "botcontrol",
+            "plpaste",
+            "permissions_users",
+            "op"
+          ],
+          "users": [
+            "example!example@example.com"
+          ]
+        },
+        "moderators": {
+          "perms": [
+            "addfactoid",
+            "delfactoid",
+            "ignore"
+          ],
+          "users": [
+            "NONE"
+          ]
+        }
+      },
+      "plugins": {},
+      "command_prefix": "."
+    }
+  ],
+  "reddit_login": {
+    "username": "",
+    "password": ""
+  },
+  "api_keys": {
+    "imgur_client_id": "clientID",
+    "imgur_client_secret": "sharedSECRET"
+  },
+  "database": "sqlite:///cloudbot.db",
+  "plugin_loading": {
+    "use_whitelist": false,
+    "blacklist": [
+      "update"
+    ],
+    "whitelist": []
+  },
+  "reloading": {
+    "config_reloading": true,
+    "plugin_reloading": true
+  },
+  "logging": {
+    "console_debug": false,
+    "file_debug": true,
+    "show_plugin_loading": true,
+    "show_motd": true,
+    "show_server_info": true,
+    "raw_file_log": false
+  }
+}
