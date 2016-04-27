@@ -8,7 +8,7 @@ import requests
 @hook.command("evestatus")
 @hook.command("tq")
 def tqstatus():
-	url_tq = "https://public-crest.eveonline.com/"
+	url_tq = "https://crest-tq.eveonline.com/"
 	json = requests.get(url_tq).json()
 	if json is None:
 		return "Tranquility server status: Offline."
@@ -23,7 +23,7 @@ def tqstatus():
 @hook.command("dust")
 @hook.command("dust514")
 def dustplayers():
-	url_tq = "https://public-crest.eveonline.com/"
+	url_tq = "https://crest-tq.eveonline.com/"
 	json = requests.get(url_tq).json()
 	if json is None:
 		return "Tranquility server status: Offline."
@@ -40,7 +40,7 @@ def dustplayers():
 @hook.command("sisi")
 @hook.command("singularity")
 def sisistatus():
-	url_tq = "http://public-crest-sisi.testeveonline.com/"
+	url_tq = "http://crest-sisi.testeveonline.com/"
 	json = requests.get(url_tq).json()
 	if json is None:
 		return "Singularity server status: Offline."
