@@ -1,3 +1,6 @@
+#Made for cloudbot
+#Created by ender.capitalg@gmail.com
+
 from cloudbot import hook
 import requests
 import lxml.html
