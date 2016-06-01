@@ -33,7 +33,9 @@ def parse_agdq_schedule():
 
 	h_t = requests.get("https://gamesdonequick.com/schedule").text
 	html = lxml.html.fromstring(h_t)
-	table = html.xpath("//tbody[@id='runTable']//tr[not(contains(@id, 'daySplit'))]")	
+#After AGDQ2016, GDQ updated their table format (just before SGDQ)
+#	table = html.xpath("//tbody[@id='runTable']//tr[not(contains(@id, 'daySplit'))]")	
+	table = html.xpath("//table[@id='runTable']//tbody//tr[not(contains(@id, 'day-split'))]")
 
 	gs = []
 	for element in table:
