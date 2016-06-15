@@ -13,29 +13,12 @@ def tqstatus():
 	if json is None:
 		return "Tranquility server status: Offline."
 
-	status = json["serviceStatus"]["eve"]
+	status = json["serviceStatus"]
 	if "online" in status:
-		players = json["userCounts"]["eve_str"]
+		players = json["userCount_str"]
 		return "Tranquility server status: Online. Players online: " + players
 	
 	return "Tranqulity server status: Offline."
-
-@hook.command("dust")
-@hook.command("dust514")
-def dustplayers():
-	url_tq = "https://crest-tq.eveonline.com/"
-	json = requests.get(url_tq).json()
-	if json is None:
-		return "Tranquility server status: Offline."
-
-	status = json["serviceStatus"]["dust"]
-	if "online" in status:
-		players = json["userCounts"]["dust_str"]
-		return "DUST514 players currently online: " + players
-
-	return "Tranquility server status: Offline."
-
-
 
 @hook.command("sisi")
 @hook.command("singularity")
