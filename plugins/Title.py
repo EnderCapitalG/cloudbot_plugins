@@ -28,6 +28,6 @@ def titlec(match, nick):
 	req = requests.get(match.group(0), headers=header)
 	tree = fromstring(req.content)
 	title = tree.findtext('.//title')
-	#there exist sites that literally have newlines in their titles because reasons
-	title = title.replace('\n', ' ').replace('\r', ' ')
+	#there exist sites that literally have newlines in their titles because reasons; now also removes leading spaces, since sites like imgur's albums insert about 30???
+	title = title.replace('\n', '').replace('\r', '').lstrip(' ')
 	return title
