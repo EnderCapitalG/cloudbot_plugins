@@ -35,7 +35,9 @@ def parse_agdq_schedule():
 	html = lxml.html.fromstring(h_t)
 #After AGDQ2016, GDQ updated their table format (just before SGDQ)
 #	table = html.xpath("//tbody[@id='runTable']//tr[not(contains(@id, 'daySplit'))]")	
-	table = html.xpath("//table[@id='runTable']//tbody//tr[not(contains(@id, 'day-split'))]")
+#After SGDQ2016, GDQ once again updated their table format. I still don't know why (just before AGDQ 2017)
+#	table = html.xpath("//table[@id='runTable']//tbody//tr[not(contains(@id, 'day-split'))]")
+	table = html.xpath("//table[@id='runTable']//tbody//tr[not(contains(@class, 'second-row'))]")
 
 	gs = []
 	for element in table:
