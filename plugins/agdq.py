@@ -2,7 +2,6 @@
 #Created by ender.capitalg@gmail.com
 
 from cloudbot import hook
-from cloudbot import blacklist
 import requests
 
 import lxml.html
@@ -20,8 +19,6 @@ oauth_token = ""
 @hook.command('agdq')
 def agdq(nick, host):
 	global oauth_token
-	if blacklist.bl_ret(nick) or blacklist.bl_ret(host):
-		return
 	url = "https://api.twitch.tv/kraken/streams/gamesdonequick?oauth_token=" + oauth_token
 	obj = requests.get(url).json()
 	if obj['stream'] is None:
@@ -55,8 +52,6 @@ def parse_agdq_schedule():
 @hook.command('schedule')
 def sched(nick, host, text, notice):
 	global oauth_token
-	if blacklist.bl_ret(nick) or blacklist.bl_ret(host):
-		return
 	global schedule, current_game, epoch
 	#update game for comparison later
 	obj = requests.get("https://api.twitch.tv/kraken/streams/gamesdonequick?oauth_token=" + oauth_token).json()
@@ -113,8 +108,6 @@ def sched(nick, host, text, notice):
 
 @hook.command('donations')
 def agdq_donation(nick, host):
-	if blacklist.bl_ret(nick) or blacklist.bl_ret(host):
-		return
 	h_t = requests.get("https://gamesdonequick.com/tracker/19").text
 	html = lxml.html.fromstring(h_t)
 	donation = html.xpath("//small")
