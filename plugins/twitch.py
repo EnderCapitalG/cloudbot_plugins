@@ -2,10 +2,14 @@
 #Created by ender.capitalg@gmail.com
 
 from cloudbot import hook
+import json
 import requests
 
+oauth_token = ""
+
 def twitchp(url):
-	url_t = "https://api.twitch.tv/kraken/streams/" + url
+	global oauth_token
+	url_t = "https://api.twitch.tv/kraken/streams/" + url + "?oauth_token=" + oauth_token
 	obj = requests.get(url_t).json()
 	if obj['stream'] is None:
 		return "Streamer " + url + " is OFFLINE."
