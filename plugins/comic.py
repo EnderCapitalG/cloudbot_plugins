@@ -15,7 +15,6 @@ from cloudbot.event import EventType
 
 mcache = dict()
 
-
 @hook.on_start()
 def load_key(bot):
     global api_key
@@ -34,7 +33,7 @@ def load_key(bot):
 
 @hook.event([EventType.message, EventType.action], ignorebots=False, singlethread=True)
 def track(event, conn):
-    if str(event.content) != ".comic" and str(event.content) != "!comic":
+    if str(event.content).startswith(".") is False and str(event.content).startswith("!") is False:
         key = (event.chan, conn.name)
         if key not in mcache:
             mcache[key] = []
@@ -201,5 +200,10 @@ def make_comic(chars, panels):
         draw.line([(0, 0), (0, panelheight-1), (panelwidth-1, panelheight-1), (panelwidth-1, 0), (0, 0)], (0, 0, 0, 0xff))
         del draw
         im.paste(pim, (0, panelheight * i))
+
+    for char in charmap:
+           del char
+    del chars
+    del bg
 
     return im
