@@ -77,6 +77,10 @@ def sched(nick, host, text, notice):
 			if text.lower() in gm.lower():
 				gtime = schedule[i+1][0].format('YYYY/M/D HH:mm:ss')
 				now = arrow.utcnow()
+                                #catch if the game was already played
+                                if schedule[i+1][0] < now:
+                                        return "Event already passed."
+
 				timetil = (schedule[i+1][0] - now).total_seconds()
 				time = timetil / 3600
 				hours = int(time)
