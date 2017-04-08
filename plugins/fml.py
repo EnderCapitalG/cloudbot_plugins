@@ -2,7 +2,6 @@
 #Created by ender.capitalg@gmail.com
 
 from cloudbot import hook
-from cloudbot import blacklist
 import requests
 import lxml.html
 
@@ -18,9 +17,6 @@ def fml_parse():
 
 	req = requests.get("http://www.fmylife.com/random").text
 	html = lxml.html.fromstring(req)
-#	table = html.xpath("//a[@class='fmllink']/@href")
-#	table = html.xpath("//a[@class='fmllink']/text()")
-#	table = html.xpath("//p[@class='block-min']/a/text()")
 	table = html.xpath("//div[@class='panel-content']/p[@class='block']/a/text()")
 	
 
@@ -33,9 +29,7 @@ def fml_parse():
 
 
 @hook.command('fml')
-def fml(nick, host):
-	if blacklist.bl_ret(nick) or blacklist.bl_ret(host):
-		return
+def fml():
 	global fml_array, array_count, array_total
 	if not fml_array or array_count >= array_total:
 		fml_parse()
